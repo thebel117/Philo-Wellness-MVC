@@ -1,4 +1,4 @@
-using PhiloMVC.PhiloMVC.Models;
+using PhiloWellnessMVC.Models.StudentProfileModels;
 
 namespace PhiloMVC.Services.StudentProfiles
 {

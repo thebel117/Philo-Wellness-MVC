@@ -1,0 +1,6 @@
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.csproj.AssemblyReference.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.AssemblyInfoInputs.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.AssemblyInfo.cs
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.csproj.CoreCompileInputs.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Data\obj\Debug\net8.0\PhiloWellnessMVC.Data.sourcelink.json

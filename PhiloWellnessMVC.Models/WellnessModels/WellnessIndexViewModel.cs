@@ -1,4 +1,4 @@
-namespace PhiloPhiloWellnessMVC.Models.WellnessModels
+namespace PhiloWellnessMVC.Models.WellnessModels
 {
     public class WellnessIndexViewModel
     {

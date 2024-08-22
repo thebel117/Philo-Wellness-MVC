@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PhiloWellnessMVC.Data;
 using PhiloWellnessMVC.Models.StudentProfileModels;
 using AutoMapper;
+using PhiloMVC.Services.StudentProfiles;
 
 namespace PhiloWellnessMVC.Services.StudentProfiles
 {

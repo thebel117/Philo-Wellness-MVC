@@ -1,8 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using PhiloWellnessMVC.Models.StudentProfileModels;
-using PhiloWellnessMVC.Models.UserModels;
-using PhiloWellnessMVC.Models.VisitModels;
-using PhiloWellnessMVC.Models.WellnessModels;
+using PhiloWellnessMVC.Data.Entities;
+
 
 namespace PhiloWellnessMVC.Data
 {
