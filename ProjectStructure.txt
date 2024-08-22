@@ -1,0 +1,82 @@
+Philo-Wellness-MVC/
+├── PhiloWellnessMVC.Data/
+│   ├── Entities/
+│   │   └── User.cs
+│   │   └── StudentProfile.cs
+│   │   └── Visit.cs
+│   │   └── Wellness.cs
+│   ├── Migrations/
+│   └── PhiloWellnessDbContext.cs
+├── PhiloWellnessMVC.Models/
+│   ├── StudentProfileModels/
+│   │   └── StudentProfileCreate.cs
+│   │   └── StudentProfileDetail.cs
+│   │   └── StudentProfileEdit.cs
+│   │   └── StudentProfileIndex.cs
+│   ├── VisitsModels/
+│   │   └── VisitsCreate.cs
+│   │   └── VisitsDetail.cs
+│   │   └── VisitsEdit.cs
+│   │   └── VisitsIndex.cs
+│   ├── WellnessModels/
+│   │   └── WellnessCreate.cs
+│   │   └── WellnessDetail.cs
+│   │   └── WellnessEdit.cs
+│   │   └── WellnessIndex.cs
+│   ├── Responses/
+│   │   └── TextResponses.cs
+│   └── AutoMap/
+├── PhiloWellnessMVC.Mvc/
+│   ├── Controllers/
+│   │   └── UsersController.cs
+│   │   └── StudentProfilesController.cs
+│   │   └── VisitsController.cs
+│   │   └── WellnessController.cs
+│   ├── Models/
+│   │   └── ErrorViewModel.cs
+│   └── Views/
+│   	├── Users/
+│   	│   └── Index.cshtml
+│   	│   └── Details.cshtml
+│   	│   └── Create.cshtml
+│   	│   └── Edit.cshtml
+│   	│   └── Delete.cshtml
+│   	├── StudentProfiles/
+│   	│   └── Index.cshtml
+│   	│   └── Details.cshtml
+│   	│   └── Create.cshtml
+│   	│   └── Edit.cshtml
+│   	│   └── Delete.cshtml
+│   	├── Visits/
+│   	│   └── Index.cshtml
+│   	│   └── Details.cshtml
+│   	│   └── Create.cshtml
+│   	│   └── Edit.cshtml
+│   	│   └── Delete.cshtml
+│   	├── Wellness/
+│   	│   └── Index.cshtml
+│   	│   └── Details.cshtml
+│   	│   └── Create.cshtml
+│   	│   └── Edit.cshtml
+│   	│   └── Delete.cshtml
+│   	├── Shared/
+│       	└── _Layout.cshtml
+│       	└── _ValidationScriptsPartial.cshtml
+│       	└── Error.cshtml
+├── PhiloWellnessMVC.Services/
+│   ├── StudentProfiles/
+│   │   └── StudentProfileService.cs
+│   │   └── IStudentProfileService.cs
+│   ├── Visits/
+│   │   └── VisitService.cs
+│   │   └── IVisitService.cs
+│   └── Wellness/
+│   	└── WellnessService.cs
+│   	└── IWellnessService.cs
+├── wwwroot/
+│   └── css/
+│   	└── site.css
+├── appsettings.json
+├── Philo.csproj
+├── Program.cs
+└── Startup.cs
