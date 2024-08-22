@@ -6,10 +6,10 @@ namespace PhiloWellnessMVC.Services
 {
     public interface IWellnessService
     {
-        Task<WellnessDetailViewModel> GetWellnessByIdAsync(int wellnessId);
-        Task<IEnumerable<WellnessIndexViewModel>> GetAllWellnessAsync();
-        Task CreateWellnessAsync(WellnessCreateViewModel model);
-        Task UpdateWellnessAsync(WellnessEditViewModel model);
-        Task DeleteWellnessAsync(int wellnessId);
+        Task<WellnessDetailViewModel?> GetWellnessByIdAsync(int wellnessId);
+        Task<List<WellnessIndexViewModel>> GetAllWellnessRatingsAsync();
+        Task<WellnessDetailViewModel?> CreateWellnessAsync(WellnessCreateViewModel model);
+        Task<bool> UpdateWellnessAsync(WellnessEditViewModel model);
+        Task<bool> DeleteWellnessAsync(int wellnessId);
     }
 }

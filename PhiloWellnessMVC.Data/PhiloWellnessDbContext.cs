@@ -12,7 +12,7 @@ namespace PhiloWellnessMVC.Data
         }
 
         public virtual DbSet<StudentProfile> StudentProfiles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<Visit> Visits { get; set; }
         public virtual DbSet<WellnessRating> WellnessRatings { get; set; }
     }

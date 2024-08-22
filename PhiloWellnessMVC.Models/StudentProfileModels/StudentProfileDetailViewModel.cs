@@ -1,5 +1,5 @@
-using PhiloMVC.Models.VisitModels;
-using PhiloMVC.Models.WellnessModels;
+using PhiloWellnessMVC.Models.VisitModels;
+using PhiloWellnessMVC.Models.WellnessModels;
 
 namespace PhiloWellnessMVC.Models.StudentProfileModels
 {

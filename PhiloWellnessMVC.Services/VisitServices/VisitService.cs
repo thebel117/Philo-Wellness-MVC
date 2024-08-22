@@ -82,5 +82,15 @@ namespace PhiloWellnessMVC.Services
             _context.Visits.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
         }
+
+        Task<VisitDetailViewModel> IVisitService.GetVisitByIdAsync(int visitId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateVisitAsync(VisitEditViewModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
