@@ -15,5 +15,5 @@ public partial class Visit
 
     public string? DetailedReason { get; set; }
 
-    //public virtual User? User { get; set; }
+    public virtual User? User { get; set; }
 }

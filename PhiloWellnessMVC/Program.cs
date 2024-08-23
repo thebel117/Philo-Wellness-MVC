@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PhiloWellnessMVC.Data;
-using PhiloWellnessMVC.Models.AutoMap; // Add if using AutoMapper profiles
-using PhiloWellnessMVC.Services; // Add if you have services to register
+using PhiloWellnessMVC.Models.AutoMap;
+using PhiloWellnessMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +12,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<PhiloWellnessDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add AutoMapper configuration if needed
-builder.Services.AddAutoMapper(typeof(YourMapProfile)); // Replace with actual profile type
+// Add AutoMapper configuration
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Add service registrations if needed
-builder.Services.AddScoped<IYourService, YourService>(); // Repeat for each service
+// Add service registrations
+builder.Services.AddScoped<IVisitService, VisitService>();
+builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
+builder.Services.AddScoped<IWellnessService, WellnessService>();
 
 var app = builder.Build();
 

@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PhiloWellnessMVC.Services;
+using PhiloWellnessMVC.Services.StudentProfile;
 using PhiloWellnessMVC.Models.StudentProfileModels;
-using PhiloMVC.Services.StudentProfiles;
 
 namespace PhiloWellnessMVC.Controllers
 {

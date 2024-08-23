@@ -1,0 +1,7 @@
+Migrations:
+
+    If you haven’t already, generate migrations using 'dotnet ef migrations add InitialCreate'
+    
+    Apply them with 'dotnet ef database update'
+
+    After updating your DbContext, run dotnet ef migrations add UpdateDbContext and dotnet ef database update to apply the changes.

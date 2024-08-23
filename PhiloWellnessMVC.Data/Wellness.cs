@@ -17,5 +17,5 @@ public partial class WellnessRating
 
     public DateTime Date { get; set; }
 
-    //public virtual User? User { get; set; }
+    public virtual User? User { get; set; }
 }

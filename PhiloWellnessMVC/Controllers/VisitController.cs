@@ -52,8 +52,13 @@ namespace PhiloWellnessMVC.Controllers
                 }
                 ModelState.AddModelError("", "Unable to create visit.");
             }
+
+            // Populate ViewBag.Users in case of a validation error or failure to create visit
+            ViewBag.Users = _context.Users.Select(u => new { u.UserId, u.UserName }).ToList();
+
             return View(model);
         }
+
 
         // GET: Visit/Edit/5
         public async Task<IActionResult> Edit(int id)

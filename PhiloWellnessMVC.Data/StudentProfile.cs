@@ -13,5 +13,5 @@ public partial class StudentProfile
 
     public string? StudentIdNumber { get; set; }
 
-    //public virtual User? User { get; set; }
+    public virtual User? User { get; set; }
 }
