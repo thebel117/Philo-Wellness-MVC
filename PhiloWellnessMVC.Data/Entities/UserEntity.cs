@@ -25,7 +25,7 @@ namespace PhiloWellnessMVC.Data.Entities
         public string? Role { get; set; } // For example: "Student" or "Faculty"
 
         // Navigation properties
-        public ICollection<Visit>? Visits { get; set; }
+        public ICollection<VisitEntity>? Visits { get; set; }
         public ICollection<WellnessEntity>? WellnessRatings { get; set; }
     }
 }

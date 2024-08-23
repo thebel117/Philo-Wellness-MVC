@@ -9,7 +9,7 @@ namespace PhiloWellnessMVC.Models.VisitModels
         public int UserId { get; set; }
 
         [Required]
-        public DateTime VisitDate { get; set; } = DateTime.Now;
+        public DateTime.UtcNow VisitDate { get; set; } = DateTime.Now;
 
         [Required]
         [StringLength(255, ErrorMessage = "Reason for visit cannot exceed 255 characters.")]

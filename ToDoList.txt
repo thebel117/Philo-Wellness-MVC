@@ -5,3 +5,5 @@ Migrations:
     Apply them with 'dotnet ef database update'
 
     After updating your DbContext, run dotnet ef migrations add UpdateDbContext and dotnet ef database update to apply the changes.
+
+    Need a WellnessScore in the WellnessEntity that is an average of the Self and Faculty scores!!!

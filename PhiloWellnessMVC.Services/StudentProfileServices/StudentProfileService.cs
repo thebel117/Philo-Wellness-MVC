@@ -23,42 +23,51 @@ namespace PhiloWellnessMVC.Services
             return await _context.StudentProfiles
                 .Select(profile => new StudentProfileIndexViewModel
                 {
-                    StudentId = profile.StudentId,
-                    Name = profile.Name,
-                    Grade = profile.Grade
+                    StudentProfileId = profile.StudentProfileId,
+                    Name = profile.FirstName + " " + profile.LastName, // Concatenate FirstName and LastName
+                    Grade = profile.Grade,
+                    StudentIdNumber = profile.StudentIdNumber // Added to match the model
                 })
                 .ToListAsync();
         }
 
-        public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(int studentId)
+
+        public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(int studentProfileId)
         {
             var entity = await _context.StudentProfiles
-                .Include(sp => sp.WellnessRatings) // Ensure WellnessRatings is included
-                .FirstOrDefaultAsync(sp => sp.StudentId == studentId);
+                .Include(sp => sp.WellnessRatings)
+                .FirstOrDefaultAsync(sp => sp.StudentProfileId == studentProfileId);
 
             if (entity == null) return null;
 
             return new StudentProfileDetailViewModel
             {
-                StudentId = entity.StudentId,
-                Name = entity.Name,
+                StudentProfileId = entity.StudentProfileId,
+                Name = entity.FirstName + " " + entity.LastName,
                 Grade = entity.Grade,
-                WellnessRecords = entity.WellnessRatings // Changed from WellnessRecords to WellnessRatings
-                    .Select(r => new WellnessRecordViewModel
+                StudentIdNumber = entity.StudentIdNumber,
+                WellnessRecords = entity.WellnessRatings
+                    .Select(r => new WellnessDetailViewModel
                     {
                         WellnessId = r.WellnessId,
-                        WellnessDate = r.WellnessDate,
-                        WellnessScore = r.WellnessScore
+                        SelfRating = r.SelfRating,
+                        FacultyRating = r.FacultyRating,
+                        Incidents = r.Incidents,
+                        Date = r.DateRecorded
                     }).ToList()
             };
         }
+
 
         public async Task<bool> CreateStudentProfileAsync(StudentProfileCreateViewModel model)
         {
             var entity = new StudentProfileEntity
             {
-                Name = model.Name,
-                Grade = model.Grade
+                FirstName = model.Name.Split(' ')[0], // Assuming name format "First Last"
+                LastName = model.Name.Split(' ').Length > 1 ? model.Name.Split(' ')[1] : string.Empty,
+                Grade = model.Grade,
+                StudentIdNumber = model.StudentIdNumber, // Added to match the model
+                                                         // Map additional properties if necessary
             };
 
             _context.StudentProfiles.Add(entity);
@@ -67,15 +76,18 @@ namespace PhiloWellnessMVC.Services
 
         public async Task<bool> UpdateStudentProfileAsync(StudentProfileEditViewModel model)
         {
-            var entity = await _context.StudentProfiles.FindAsync(model.StudentId);
+            var entity = await _context.StudentProfiles.FindAsync(model.StudentProfileId);
 
             if (entity == null) return false;
 
-            entity.Name = model.Name;
+            entity.FirstName = model.FirstName; // Ensure properties are updated
+            entity.LastName = model.LastName;
             entity.Grade = model.Grade;
+            entity.StudentIdNumber = model.StudentId; // Update with the correct property if needed
 
             return await _context.SaveChangesAsync() == 1;
         }
+
 
         public async Task<bool> DeleteStudentProfileAsync(int studentId)
         {

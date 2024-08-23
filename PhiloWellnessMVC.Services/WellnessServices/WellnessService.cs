@@ -20,21 +20,23 @@ namespace PhiloWellnessMVC.Services
         public async Task<IEnumerable<WellnessIndexViewModel>> GetAllWellnessRatingsAsync()
         {
             return await _context.WellnessRatings
-                .Include(w => w.StudentProfile) // Ensure StudentProfile is included
+                .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
                 .Select(record => new WellnessIndexViewModel
                 {
                     WellnessId = record.WellnessId,
-                    StudentName = record.StudentProfile.Name,
-                    WellnessDate = record.WellnessDate,
-                    WellnessScore = record.WellnessScore
+                    UserName = record.StudentProfile.Name, // Ensure this property exists
+                    SelfRating = record.SelfRating, // Change to correct properties if needed
+                    FacultyRating = record.FacultyRating,
+                    DateRecorded = record.WellnessDate
                 })
                 .ToListAsync();
         }
 
+
         public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(int wellnessId)
         {
             var entity = await _context.WellnessRatings
-                .Include(w => w.StudentProfile) // Ensure StudentProfile is included
+                .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
                 .FirstOrDefaultAsync(w => w.WellnessId == wellnessId);
 
             if (entity == null) return null;
@@ -42,9 +44,10 @@ namespace PhiloWellnessMVC.Services
             return new WellnessDetailViewModel
             {
                 WellnessId = entity.WellnessId,
-                StudentName = entity.StudentProfile.Name,
-                WellnessDate = entity.WellnessDate,
-                WellnessScore = entity.WellnessScore
+                UserName = entity.StudentProfile.Name, // Ensure this property exists
+                SelfRating = entity.SelfRating, // Adjust as per model changes
+                FacultyRating = entity.FacultyRating,
+                Date = entity.WellnessDate
             };
         }
 
@@ -52,9 +55,10 @@ namespace PhiloWellnessMVC.Services
         {
             var entity = new WellnessEntity
             {
-                WellnessDate = model.WellnessDate,
-                WellnessScore = model.WellnessScore,
-                StudentProfileId = model.StudentProfileId // Ensure correct foreign key
+                WellnessDate = model.Date,
+                SelfRating = model.SelfRating, // Ensure correct property is used
+                FacultyRating = model.FacultyRating,
+                StudentProfileId = model.UserId // Ensure this is correctly referenced
             };
 
             _context.WellnessRatings.Add(entity);
@@ -67,8 +71,9 @@ namespace PhiloWellnessMVC.Services
 
             if (entity == null) return false;
 
-            entity.WellnessDate = model.WellnessDate;
-            entity.WellnessScore = model.WellnessScore;
+            entity.WellnessDate = model.Date;
+            entity.SelfRating = model.SelfRating; // Adjust as per your needs
+            entity.FacultyRating = model.FacultyRating;
 
             return await _context.SaveChangesAsync() == 1;
         }

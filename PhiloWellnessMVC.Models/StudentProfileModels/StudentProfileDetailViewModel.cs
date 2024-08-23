@@ -7,7 +7,7 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
     {
         public int StudentProfileId { get; set; }
         public int UserId { get; set; }
-        public string? Name { get; set; }
+        required public string Name { get; set; }
         public int Grade { get; set; }
         public string? StudentIdNumber { get; set; }
         public List<VisitIndexViewModel>? Visits { get; set; }
