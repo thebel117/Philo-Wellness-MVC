@@ -1,0 +1,105 @@
+@model PhiloWellnessMVC.Models.StudentProfileModels.StudentProfileDetailViewModel
+
+@{
+    ViewData["Title"] = "Student Profile Details";
+}
+
+<h1>@Model.Name's Profile</h1>
+
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentProfileId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentProfileId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentIdNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentIdNumber)
+        </dd>
+    </dl>
+</div>
+
+<h3>Visits</h3>
+@if (Model.Visits != null && Model.Visits.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visit in Model.Visits)
+            {
+                <tr>
+                    <td>@visit.VisitDate</td>
+                    <td>@visit.ReasonForVisit</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No visits recorded.</p>
+}
+
+<h3>Wellness Records</h3>
+@if (Model.WellnessRecords != null && Model.WellnessRecords.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Date Recorded</th>
+                <th>Self-Rated Wellness</th>
+                <th>Faculty Perceived Wellness</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.WellnessRecords)
+            {
+                <tr>
+                    <td>@record.DateRecorded</td>
+                    <td>@record.SelfRating</td>
+                    <td>@record.FacultyRating</td>
+                    <td>@record.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No wellness records available.</p>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StudentProfileId" class="text-warning">Edit</a> |
+    <a asp-action="Index" class="text-warning">Back to List</a>
+</div>

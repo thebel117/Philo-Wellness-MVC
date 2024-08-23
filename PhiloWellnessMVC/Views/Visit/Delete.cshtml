@@ -1,0 +1,41 @@
+@model PhiloWellnessMVC.Models.VisitModels.VisitDetailViewModel
+
+@{
+    ViewData["Title"] = "Delete Visit";
+}
+
+<h1>Delete Visit</h1>
+<h4>Are you sure you want to delete the visit on @Model.VisitDate.ToShortDateString() for @Model.UserName?</h4>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.VisitId)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.VisitId)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.VisitDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.VisitDate.ToShortDateString())
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ReasonForVisit)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ReasonForVisit)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.DetailedReason)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.DetailedReason)
+    </dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

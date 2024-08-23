@@ -9,12 +9,12 @@ namespace PhiloWellnessMVC.Models.AutoMap
     {
         public VisitMapProfile()
         {
-            CreateMap<VisitEntity, VisitDetail>();
-            CreateMap<VisitEntity, VisitIndex>();
-            CreateMap<VisitEntity, VisitEdit>();
+            CreateMap<VisitEntity, VisitDetailViewModel>();
+            CreateMap<VisitEntity, VisitIndexViewModel>();
+            CreateMap<VisitEntity, VisitEditViewModel>();
 
-            CreateMap<VisitCreate, VisitEntity>();
-            CreateMap<VisitEdit, VisitEntity>();
+            CreateMap<VisitCreateViewModel, VisitEntity>();
+            CreateMap<VisitEditViewModel, VisitEntity>();
         }
     }
 }

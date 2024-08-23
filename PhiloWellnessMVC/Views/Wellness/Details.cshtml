@@ -1,0 +1,44 @@
+@model PhiloWellnessMVC.Models.WellnessModels.WellnessDetailViewModel
+
+@{
+    ViewData["Title"] = "Wellness Record Details";
+}
+
+<h1>Wellness Record Details</h1>
+
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Date)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Date)
+    </dd>
+
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SelfRating)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SelfRating)
+    </dd>
+
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FacultyRating)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FacultyRating)
+    </dd>
+
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Incidents)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Incidents)
+    </dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.WellnessId">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back To List</a>
+</div>

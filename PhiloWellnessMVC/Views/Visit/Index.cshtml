@@ -1,0 +1,44 @@
+@model IEnumerable<PhiloWellnessMVC.Models.VisitModels.VisitIndexViewModel>
+
+@{
+    ViewData["Title"] = "All Visits";
+}
+
+<h1 class="text-center">All Visits</h1>
+<a class="btn btn-primary" asp-action="Create">Create A New Visit</a>
+
+<div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.VisitDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReasonForVisit)
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visit in Model)
+            {
+                <tr>
+                    <td>
+                        @visit.VisitDate.ToShortDateString()
+                    </td>
+                    <td>
+                        @visit.ReasonForVisit
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = visit.VisitId }) |
+                        @Html.ActionLink("Details", "Details", new { id = visit.VisitId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = visit.VisitId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

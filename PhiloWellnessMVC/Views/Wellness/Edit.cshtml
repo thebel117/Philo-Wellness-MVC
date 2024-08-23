@@ -1,0 +1,60 @@
+@model PhiloWellnessMVC.Models.WellnessModels.WellnessEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Wellness Record";
+}
+
+<h1>Edit Wellness Record</h1>
+
+@if (ViewData["ErrorMsg"] != null)
+{
+    <h4 class="text-danger">@ViewData["ErrorMsg"]</h4>
+}
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" type="date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SelfRating" class="control-label"></label>
+                <input asp-for="SelfRating" class="form-control" placeholder="1-20" />
+                <span asp-validation-for="SelfRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FacultyRating" class="control-label"></label>
+                <input asp-for="FacultyRating" class="form-control" placeholder="1-20" />
+                <span asp-validation-for="FacultyRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Incidents" class="control-label"></label>
+                <textarea asp-for="Incidents" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Incidents" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="WellnessId" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index" class="text-dark">Back To Wellness Records List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

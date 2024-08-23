@@ -14,6 +14,7 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
         public int Grade { get; set; }
 
         [StringLength(50, ErrorMessage = "Student ID Number cannot exceed 50 characters.")]
-        public string? StudentIdNumber { get; set; }
+        public string? StudentId { get; set; }
+        
     }
 }

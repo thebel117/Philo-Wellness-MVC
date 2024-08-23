@@ -15,9 +15,16 @@ namespace PhiloWellnessMVC.Data.Entities
         [Required]
         public string? ReasonForVisit { get; set; }
 
+        [StringLength(255, ErrorMessage = "Detailed reason cannot exceed 255 characters.")]
+        public string? DetailedReason { get; set; } // Added DetailedReason property
+
         // Foreign key for StudentProfile
         [ForeignKey("StudentProfileEntity")]
         public int StudentProfileId { get; set; }
         public StudentProfileEntity? StudentProfile { get; set; }
+
+        [ForeignKey("UserEntity")]
+        public int UserId { get; set; }
+        public UserEntity? User { get; set; }
     }
 }

@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PhiloWellnessMVC.Data;
 using PhiloWellnessMVC.Data.Entities;
@@ -12,72 +10,77 @@ namespace PhiloWellnessMVC.Services
 {
     public class WellnessService : IWellnessService
     {
-        private readonly PhiloWellnessDbContext _dbContext;
-        private readonly IMapper _mapper;
+        private readonly PhiloWellnessDbContext _context;
 
-        public WellnessService(PhiloWellnessDbContext dbContext, IMapper mapper)
+        public WellnessService(PhiloWellnessDbContext context)
         {
-            _dbContext = dbContext;
-            _mapper = mapper;
+            _context = context;
         }
 
-        public async Task<WellnessDetailViewModel?> GetWellnessByIdAsync(int wellnessId)
+        public async Task<IEnumerable<WellnessIndexViewModel>> GetAllWellnessRatingsAsync()
         {
-            var wellnessEntity = await _dbContext.WellnessRatings
-                .Include(w => w.StudentProfile) // Include related data
+            return await _context.WellnessRatings
+                .Include(w => w.StudentProfile) // Ensure StudentProfile is included
+                .Select(record => new WellnessIndexViewModel
+                {
+                    WellnessId = record.WellnessId,
+                    StudentName = record.StudentProfile.Name,
+                    WellnessDate = record.WellnessDate,
+                    WellnessScore = record.WellnessScore
+                })
+                .ToListAsync();
+        }
+
+        public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(int wellnessId)
+        {
+            var entity = await _context.WellnessRatings
+                .Include(w => w.StudentProfile) // Ensure StudentProfile is included
                 .FirstOrDefaultAsync(w => w.WellnessId == wellnessId);
 
-            return wellnessEntity is null ? null : _mapper.Map<WellnessEntity, WellnessDetailViewModel>(wellnessEntity);
+            if (entity == null) return null;
+
+            return new WellnessDetailViewModel
+            {
+                WellnessId = entity.WellnessId,
+                StudentName = entity.StudentProfile.Name,
+                WellnessDate = entity.WellnessDate,
+                WellnessScore = entity.WellnessScore
+            };
         }
 
-        public async Task<List<WellnessIndexViewModel>> GetAllWellnessRatingsAsync()
+        public async Task<bool> CreateWellnessAsync(WellnessCreateViewModel model)
         {
-            var wellnessEntities = await _dbContext.WellnessRatings
-                .Select(entity => _mapper.Map<WellnessEntity, WellnessIndexViewModel>(entity))
-                .ToListAsync();
+            var entity = new WellnessEntity
+            {
+                WellnessDate = model.WellnessDate,
+                WellnessScore = model.WellnessScore,
+                StudentProfileId = model.StudentProfileId // Ensure correct foreign key
+            };
 
-            return wellnessEntities;
+            _context.WellnessRatings.Add(entity);
+            return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<WellnessDetailViewModel?> CreateWellnessAsync(WellnessCreateViewModel request)
+        public async Task<bool> UpdateWellnessAsync(WellnessEditViewModel model)
         {
-            var wellnessEntity = _mapper.Map<WellnessCreateViewModel, WellnessEntity>(request);
+            var entity = await _context.WellnessRatings.FindAsync(model.WellnessId);
 
-            // Assuming the StudentProfileId is equivalent to UserId in the view model
-            wellnessEntity.StudentProfileId = request.UserId;
+            if (entity == null) return false;
 
-            _dbContext.WellnessRatings.Add(wellnessEntity);
-            var numberOfChanges = await _dbContext.SaveChangesAsync();
+            entity.WellnessDate = model.WellnessDate;
+            entity.WellnessScore = model.WellnessScore;
 
-            return numberOfChanges == 1 ? _mapper.Map<WellnessEntity, WellnessDetailViewModel>(wellnessEntity) : null;
+            return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<bool> UpdateWellnessAsync(WellnessEditViewModel request)
+        public async Task<bool> DeleteWellnessAsync(int wellnessId)
         {
-            var wellnessExists = await _dbContext.WellnessRatings.AnyAsync(wellness => 
-            wellness.WellnessId == request.WellnessId);
+            var entity = await _context.WellnessRatings.FindAsync(wellnessId);
 
-            if(!wellnessExists)
-                return false;
+            if (entity == null) return false;
 
-            var newEntity = _mapper.Map<WellnessEditViewModel, WellnessEntity>(request);
-            newEntity.StudentProfileId = request.UserId;
-
-            _dbContext.Entry(newEntity).State = EntityState.Modified;
-            var numberOfChanges = await _dbContext.SaveChangesAsync();
-
-            return numberOfChanges == 1;
-        }
-
-        public async Task<bool> DeleteWellnessAsync(int id)
-        {
-            var wellnessEntity = await _dbContext.WellnessRatings.FindAsync(id);
-
-            if (wellnessEntity == null)
-                return false;
-
-            _dbContext.WellnessRatings.Remove(wellnessEntity);
-            return await _dbContext.SaveChangesAsync() == 1;
+            _context.WellnessRatings.Remove(entity);
+            return await _context.SaveChangesAsync() == 1;
         }
     }
 }

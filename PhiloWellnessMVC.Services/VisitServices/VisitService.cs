@@ -23,7 +23,7 @@ namespace PhiloWellnessMVC.Services
             {
                 VisitDate = model.VisitDate,
                 ReasonForVisit = model.ReasonForVisit,
-                StudentProfileId = model.StudentProfileId
+                UserId = model.UserId // Changed from StudentIdNumber to UserId
             };
 
             _context.Visits.Add(entity);
@@ -33,35 +33,36 @@ namespace PhiloWellnessMVC.Services
         public async Task<IEnumerable<VisitIndexViewModel>> GetAllVisitsAsync()
         {
             return await _context.Visits
+                .Include(v => v.User) // Ensure User is included
                 .Select(visit => new VisitIndexViewModel
                 {
                     VisitId = visit.VisitId,
                     VisitDate = visit.VisitDate,
                     ReasonForVisit = visit.ReasonForVisit,
-                    StudentFullName = visit.StudentProfile.FirstName + " " + visit.StudentProfile.LastName
+                    UserName = visit.User.Name // Changed from StudentProfile.Name to User.Name
                 })
                 .ToListAsync();
         }
 
-        public async Task<VisitDetail> GetVisitByIdAsync(int visitId)
+        public async Task<VisitDetailViewModel> GetVisitByIdAsync(int visitId)
         {
             var entity = await _context.Visits
-                .Include(visit => visit.StudentProfile)
-                .FirstOrDefaultAsync(visit => visit.VisitId == visitId);
+                .Include(v => v.User) // Ensure User is included
+                .FirstOrDefaultAsync(v => v.VisitId == visitId);
 
             if (entity == null) return null;
 
-            return new VisitDetail
+            return new VisitDetailViewModel
             {
                 VisitId = entity.VisitId,
                 VisitDate = entity.VisitDate,
                 ReasonForVisit = entity.ReasonForVisit,
-                StudentProfileId = entity.StudentProfileId,
-                StudentFullName = entity.StudentProfile.FirstName + " " + entity.StudentProfile.LastName
+                UserId = entity.UserId, // Changed from StudentProfileId to UserId
+                UserName = entity.User.Name // Changed from StudentProfile.FirstName + " " + StudentProfile.LastName to User.Name
             };
         }
 
-        public async Task<bool> UpdateVisitAsync(VisitEdit model)
+        public async Task<bool> UpdateVisitAsync(VisitEditViewModel model)
         {
             var entity = await _context.Visits.FindAsync(model.VisitId);
 
@@ -81,16 +82,6 @@ namespace PhiloWellnessMVC.Services
 
             _context.Visits.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
-        }
-
-        Task<VisitDetailViewModel> IVisitService.GetVisitByIdAsync(int visitId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateVisitAsync(VisitEditViewModel model)
-        {
-            throw new NotImplementedException();
         }
     }
 }

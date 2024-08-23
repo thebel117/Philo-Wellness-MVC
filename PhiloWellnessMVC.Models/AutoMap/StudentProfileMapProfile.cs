@@ -9,12 +9,12 @@ namespace PhiloWellnessMVC.Models.AutoMap
     {
         public StudentProfileMapProfile()
         {
-            CreateMap<StudentProfileEntity, StudentProfileDetail>();
-            CreateMap<StudentProfileEntity, StudentProfileIndex>();
-            CreateMap<StudentProfileEntity, StudentProfileEdit>();
+            CreateMap<StudentProfileEntity, StudentProfileDetailViewModel>();
+            CreateMap<StudentProfileEntity, StudentProfileIndexViewModel>();
+            CreateMap<StudentProfileEntity, StudentProfileEditViewModel>();
 
-            CreateMap<StudentProfileCreate, StudentProfileEntity>();
-            CreateMap<StudentProfileEdit, StudentProfileEntity>();
+            CreateMap<StudentProfileCreateViewModel, StudentProfileEntity>();
+            CreateMap<StudentProfileEditViewModel, StudentProfileEntity>();
         }
     }
 }

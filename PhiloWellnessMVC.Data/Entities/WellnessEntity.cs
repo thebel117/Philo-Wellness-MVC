@@ -12,12 +12,10 @@ namespace PhiloWellnessMVC.Data.Entities
         [Required]
         public DateTime DateRecorded { get; set; }
 
-        [Required]
-        [Range(1, 20)]
+        [Required, Range(1, 20)]
         public int SelfRatedWellness { get; set; }
 
-        [Required]
-        [Range(1, 20)]
+        [Required,  Range(1, 20)]
         public int FacultyPerceivedWellness { get; set; }
 
         public string? Notes { get; set; }
@@ -26,5 +24,9 @@ namespace PhiloWellnessMVC.Data.Entities
         [ForeignKey("StudentProfileEntity")]
         public int StudentProfileId { get; set; }
         public StudentProfileEntity? StudentProfile { get; set; }
+            
+        [ForeignKey("UserEntity")]
+        public int UserId { get; set; }
+        public UserEntity? User { get; set; }
     }
 }

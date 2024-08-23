@@ -1,0 +1,56 @@
+@model IEnumerable<PhiloWellnessMVC.Models.WellnessModels.WellnessIndexViewModel>
+
+@{
+    ViewData["Title"] = "All Wellness Records";
+}
+
+<h1 class="text-center">All Wellness Records</h1>
+<a class="btn btn-primary" asp-action="Create">Create A New Wellness Record</a>
+
+<div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateRecorded)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelfRating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FacultyRating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var wellness in Model)
+            {
+                <tr>
+                    <td>
+                        @wellness.DateRecorded.ToShortDateString()
+                    </td>
+                    <td>
+                        @wellness.SelfRating
+                    </td>
+                    <td>
+                        @wellness.FacultyRating
+                    </td>
+                    <td>
+                        @wellness.Notes
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = wellness.WellnessId }) |
+                        @Html.ActionLink("Details", "Details", new { id = wellness.WellnessId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = wellness.WellnessId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

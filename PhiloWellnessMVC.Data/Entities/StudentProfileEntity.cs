@@ -22,6 +22,10 @@ namespace PhiloWellnessMVC.Data.Entities
 
         [Required]
         public int StudentIdNumber { get; set; }
+            
+        [ForeignKey("UserEntity")]
+        public int UserId { get; set; }
+        public UserEntity? User { get; set; }
 
         // Navigation properties
         public ICollection<VisitEntity>? Visits { get; set; }
