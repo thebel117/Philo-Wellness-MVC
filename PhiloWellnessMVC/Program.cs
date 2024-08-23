@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IVisitService, VisitService>();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 builder.Services.AddScoped<IWellnessService, WellnessService>();
+builder.Services.AddAutoMapper(typeof(StudentProfileMapProfile), typeof(VisitMapProfile), typeof(WellnessMapProfile));
 
 var app = builder.Build();
 
