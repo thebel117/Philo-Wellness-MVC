@@ -9,7 +9,7 @@ namespace PhiloWellnessMVC.Models.VisitModels
         public int VisitId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         public DateTime VisitDate { get; set; }

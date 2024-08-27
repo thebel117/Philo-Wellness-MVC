@@ -9,7 +9,7 @@ namespace PhiloWellnessMVC.Models.WellnessModels
         public string? WellnessId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [Range(1, 20, ErrorMessage = "Self Rating must be between 1 and 20.")]
@@ -20,7 +20,7 @@ namespace PhiloWellnessMVC.Models.WellnessModels
         public int FacultyRating { get; set; } // 1-20 scale
 
         [MaxLength(2000, ErrorMessage = "Incidents cannot exceed 2000 characters.")]
-        public string? Incidents { get; set; }
+        public string? IncidentNotes { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

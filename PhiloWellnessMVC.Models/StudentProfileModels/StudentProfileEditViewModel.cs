@@ -16,7 +16,7 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
 
 
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Range(1, 12, ErrorMessage = "Grade must be between 1 and 12.")]
         public int Grade { get; set; }

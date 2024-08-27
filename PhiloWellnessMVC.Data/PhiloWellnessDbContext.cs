@@ -35,7 +35,8 @@ namespace PhiloWellnessMVC.Data
             modelBuilder.Entity<WellnessEntity>()
                 .HasOne(w => w.StudentProfile)
                 .WithMany(sp => sp.WellnessRatings)
-                .HasForeignKey(w => w.StudentProfileId);
+                .HasForeignKey(w => w.StudentProfileId)
+                .OnDelete(DeleteBehavior.Cascade); // Adjust as necessary
 
             modelBuilder.Entity<WellnessEntity>()
                 .HasOne(w => w.User)

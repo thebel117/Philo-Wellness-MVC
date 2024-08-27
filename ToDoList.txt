@@ -1,9 +1,14 @@
-Migrations:
-
-    If you haven’t already, generate migrations using 'dotnet ef migrations add InitialCreate'
+generate migrations using 'dotnet ef migrations add InitialCreate -p PhiloWellnessDbRemake -s Philo-Wellness-MVC'
     
-    Apply them with 'dotnet ef database update'
+apply them with 'dotnet ef database update'
 
-    After updating your DbContext, run dotnet ef migrations add UpdateDbContext and dotnet ef database update to apply the changes.
+after updating your DbContext, run 'dotnet ef migrations add UpdateDbContext' and 'dotnet ef database update' to apply the changes
 
-    Need a WellnessScore in the WellnessEntity that is an average of the Self and Faculty scores!!!
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TO DO:
+
+Rebuild database:
+    Cannot update the db through terminal due to unknown errors; retry making it prior to final push
+
+Fix types:
+    StudentProfileId is going to become just a string due to complications with services; need this done to redo DB and to start testing functionality.
