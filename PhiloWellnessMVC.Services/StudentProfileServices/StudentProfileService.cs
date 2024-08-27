@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using PhiloWellnessMVC.Data;
 using PhiloWellnessMVC.Data.Entities;
 using PhiloWellnessMVC.Models.StudentProfileModels;
-using PhiloWellnessMVC.Services;
+using PhiloWellnessMVC.Models.WellnessModels;
+using PhiloWellnessMVC.Models.VisitModels;
 
-namespace PhiloWellnessMVC.Services
+namespace PhiloWellnessMVC.Services.StudentProfileServices
 {
     public class StudentProfileService : IStudentProfileService
     {
@@ -26,11 +27,10 @@ namespace PhiloWellnessMVC.Services
                     StudentProfileId = profile.StudentProfileId,
                     Name = profile.FirstName + " " + profile.LastName, // Concatenate FirstName and LastName
                     Grade = profile.Grade,
-                    StudentIdNumber = profile.StudentIdNumber // Added to match the model
+                    StudentIdNumber = profile.StudentIdNumber // Treated as a string
                 })
                 .ToListAsync();
         }
-
 
         public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(int studentProfileId)
         {
@@ -45,29 +45,29 @@ namespace PhiloWellnessMVC.Services
                 StudentProfileId = entity.StudentProfileId,
                 Name = entity.FirstName + " " + entity.LastName,
                 Grade = entity.Grade,
-                StudentIdNumber = entity.StudentIdNumber,
+                StudentIdNumber = entity.StudentIdNumber, // Treated as a string
                 WellnessRecords = entity.WellnessRatings
                     .Select(r => new WellnessDetailViewModel
                     {
                         WellnessId = r.WellnessId,
-                        SelfRating = r.SelfRating,
-                        FacultyRating = r.FacultyRating,
-                        Incidents = r.Incidents,
+                        SelfRating = r.SelfRatedWellness,
+                        FacultyRating = r.FacultyPerceivedWellness,
+                        IncidentNotes = r.IncidentNotes,
                         Date = r.DateRecorded
                     }).ToList()
             };
         }
 
-
         public async Task<bool> CreateStudentProfileAsync(StudentProfileCreateViewModel model)
         {
+            var nameParts = model.Name.Split(' ');
             var entity = new StudentProfileEntity
             {
-                FirstName = model.Name.Split(' ')[0], // Assuming name format "First Last"
-                LastName = model.Name.Split(' ').Length > 1 ? model.Name.Split(' ')[1] : string.Empty,
+                FirstName = nameParts[0],
+                LastName = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty,
                 Grade = model.Grade,
-                StudentIdNumber = model.StudentIdNumber, // Added to match the model
-                                                         // Map additional properties if necessary
+                StudentIdNumber = model.StudentIdNumber, // Treated as a string
+                // Map additional properties if necessary
             };
 
             _context.StudentProfiles.Add(entity);
@@ -80,14 +80,13 @@ namespace PhiloWellnessMVC.Services
 
             if (entity == null) return false;
 
-            entity.FirstName = model.FirstName; // Ensure properties are updated
+            entity.FirstName = model.FirstName;
             entity.LastName = model.LastName;
             entity.Grade = model.Grade;
-            entity.StudentIdNumber = model.StudentId; // Update with the correct property if needed
+            entity.StudentIdNumber = model.StudentIdNumber; // Treated as a string
 
             return await _context.SaveChangesAsync() == 1;
         }
-
 
         public async Task<bool> DeleteStudentProfileAsync(int studentId)
         {

@@ -21,7 +21,7 @@ namespace PhiloWellnessMVC.Data.Entities
         public int Grade { get; set; }
 
         [Required]
-        public int StudentIdNumber { get; set; }
+        public string? StudentIdNumber { get; set; }
             
         [ForeignKey("UserEntity")]
         public int UserId { get; set; }

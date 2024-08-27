@@ -6,6 +6,14 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
     {
         [Required]
         public int StudentProfileId { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string? FirstName { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string? LastName { get; set; }
+
 
         [Required]
         public int UserId { get; set; }
@@ -15,6 +23,6 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
 
         [StringLength(50, ErrorMessage = "Student ID Number cannot exceed 50 characters.")]
         required public string StudentIdNumber { get; set; }
-        
+
     }
 }

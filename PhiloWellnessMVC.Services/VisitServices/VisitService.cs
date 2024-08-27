@@ -40,7 +40,7 @@ namespace PhiloWellnessMVC.Services
                     VisitId = visit.VisitId,
                     VisitDate = visit.VisitDate,
                     ReasonForVisit = visit.ReasonForVisit,
-                    UserName = visit.User.Name // Ensure User.Name or equivalent property exists
+                    UserId = visit.UserId // Ensure User.Name or equivalent property exists
                 })
                 .ToListAsync();
         }
@@ -60,7 +60,6 @@ namespace PhiloWellnessMVC.Services
                 VisitDate = entity.VisitDate,
                 ReasonForVisit = entity.ReasonForVisit,
                 UserId = entity.UserId,
-                UserName = entity.User.Name // Ensure that the User.Name or equivalent property exists
             };
         }
 

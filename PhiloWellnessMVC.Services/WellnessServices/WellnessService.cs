@@ -25,9 +25,9 @@ namespace PhiloWellnessMVC.Services
                 {
                     WellnessId = record.WellnessId,
                     UserName = record.StudentProfile.Name, // Ensure this property exists
-                    SelfRating = record.SelfRating, // Change to correct properties if needed
-                    FacultyRating = record.FacultyRating,
-                    DateRecorded = record.WellnessDate
+                    SelfRating = record.SelfRatedWellness, // Change to correct properties if needed
+                    FacultyRating = record.FacultyPerceivedWellness,
+                    Date = record.DateRecorded
                 })
                 .ToListAsync();
         }
@@ -44,10 +44,10 @@ namespace PhiloWellnessMVC.Services
             return new WellnessDetailViewModel
             {
                 WellnessId = entity.WellnessId,
-                UserName = entity.StudentProfile.Name, // Ensure this property exists
-                SelfRating = entity.SelfRating, // Adjust as per model changes
-                FacultyRating = entity.FacultyRating,
-                Date = entity.WellnessDate
+                UserId = entity.StudentProfile.StudentProfileId, // Ensure this property exists
+                SelfRating = entity.SelfRatedWellness, // Adjust as per model changes
+                FacultyRating = entity.FacultyPerceivedWellness,
+                Date = entity.DateRecorded
             };
         }
 
@@ -55,9 +55,9 @@ namespace PhiloWellnessMVC.Services
         {
             var entity = new WellnessEntity
             {
-                WellnessDate = model.Date,
-                SelfRating = model.SelfRating, // Ensure correct property is used
-                FacultyRating = model.FacultyRating,
+                DateRecorded = model.Date,
+                SelfRatedWellness = model.SelfRating, // Ensure correct property is used
+                FacultyPerceivedWellness = model.FacultyRating,
                 StudentProfileId = model.UserId // Ensure this is correctly referenced
             };
 
@@ -71,9 +71,9 @@ namespace PhiloWellnessMVC.Services
 
             if (entity == null) return false;
 
-            entity.WellnessDate = model.Date;
-            entity.SelfRating = model.SelfRating; // Adjust as per your needs
-            entity.FacultyRating = model.FacultyRating;
+            entity.DateRecorded = model.Date;
+            entity.SelfRatedWellness = model.SelfRating; // Adjust as per your needs
+            entity.FacultyPerceivedWellness = model.FacultyRating;
 
             return await _context.SaveChangesAsync() == 1;
         }

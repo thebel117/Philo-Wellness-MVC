@@ -18,7 +18,7 @@ namespace PhiloWellnessMVC.Data.Entities
         [Required,  Range(1, 20)]
         public int FacultyPerceivedWellness { get; set; }
 
-        public string? Notes { get; set; }
+        public string? IncidentNotes { get; set; }
 
         // Foreign key for StudentProfile
         [ForeignKey("StudentProfileEntity")]
