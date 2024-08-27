@@ -13,10 +13,10 @@ namespace PhiloWellnessMVC.Data.Entities
         public DateTime DateRecorded { get; set; }
 
         [Required, Range(1, 20)]
-        public int SelfRatedWellness { get; set; }
+        public int SelfRating { get; set; }
 
         [Required,  Range(1, 20)]
-        public int FacultyPerceivedWellness { get; set; }
+        public int FacultyRating { get; set; }
 
         public string? IncidentNotes { get; set; }
 

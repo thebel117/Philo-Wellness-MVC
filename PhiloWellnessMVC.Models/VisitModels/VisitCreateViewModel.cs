@@ -6,7 +6,7 @@ namespace PhiloWellnessMVC.Models.VisitModels
     public class VisitCreateViewModel
     {
         [Required]
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
 
         [Required]
         public DateTime VisitDate { get; set; } = DateTime.Now;

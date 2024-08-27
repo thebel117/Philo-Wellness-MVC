@@ -25,38 +25,38 @@ namespace PhiloWellnessMVC.Services.StudentProfileServices
                 .Select(profile => new StudentProfileIndexViewModel
                 {
                     StudentProfileId = profile.StudentProfileId,
-                    Name = profile.FirstName + " " + profile.LastName, // Concatenate FirstName and LastName
+                    Name = profile.FirstName + " " + profile.LastName, // concatenate FirstName and LastName
                     Grade = profile.Grade,
-                    StudentIdNumber = profile.StudentIdNumber // Treated as a string
+                    StudentIdNumber = profile.StudentIdNumber //  as a string
                 })
                 .ToListAsync();
         }
 
-        public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(int studentProfileId)
-        {
-            var entity = await _context.StudentProfiles
-                .Include(sp => sp.WellnessRatings)
-                .FirstOrDefaultAsync(sp => sp.StudentProfileId == studentProfileId);
+public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(string studentProfileId)
+{
+    var entity = await _context.StudentProfiles
+        .Include(sp => sp.WellnessRatings)
+        .FirstOrDefaultAsync(sp => sp.StudentProfileId == studentProfileId); // Use '==' for comparison
 
-            if (entity == null) return null;
+    if (entity == null) return null;
 
-            return new StudentProfileDetailViewModel
+    return new StudentProfileDetailViewModel
+    {
+        StudentProfileId = entity.StudentProfileId,
+        Name = entity.FirstName + " " + entity.LastName,
+        Grade = entity.Grade,
+        StudentIdNumber = entity.StudentIdNumber, // treat it as a string instead
+        WellnessRecords = entity.WellnessRatings
+            .Select(r => new WellnessIndexViewModel
             {
-                StudentProfileId = entity.StudentProfileId,
-                Name = entity.FirstName + " " + entity.LastName,
-                Grade = entity.Grade,
-                StudentIdNumber = entity.StudentIdNumber, // Treated as a string
-                WellnessRecords = entity.WellnessRatings
-                    .Select(r => new WellnessDetailViewModel
-                    {
-                        WellnessId = r.WellnessId,
-                        SelfRating = r.SelfRatedWellness,
-                        FacultyRating = r.FacultyPerceivedWellness,
-                        IncidentNotes = r.IncidentNotes,
-                        Date = r.DateRecorded
-                    }).ToList()
-            };
-        }
+                WellnessId = r.WellnessId,
+                SelfRating = r.SelfRating,
+                FacultyRating = r.FacultyRating,
+                Date = r.DateRecorded
+            }).ToList()
+    };
+}
+
 
         public async Task<bool> CreateStudentProfileAsync(StudentProfileCreateViewModel model)
         {
@@ -96,6 +96,11 @@ namespace PhiloWellnessMVC.Services.StudentProfileServices
 
             _context.StudentProfiles.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
+        }
+
+        public Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(int studentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

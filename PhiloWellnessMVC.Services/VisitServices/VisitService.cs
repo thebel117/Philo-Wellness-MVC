@@ -23,34 +23,32 @@ namespace PhiloWellnessMVC.Services
             {
                 VisitDate = model.VisitDate,
                 ReasonForVisit = model.ReasonForVisit,
-                UserId = model.UserId // Ensure that UserId is used consistently
+                UserId = model.UserId
             };
 
             _context.Visits.Add(entity);
             return await _context.SaveChangesAsync() == 1;
         }
 
-
         public async Task<IEnumerable<VisitIndexViewModel>> GetAllVisitsAsync()
         {
             return await _context.Visits
-                .Include(v => v.User) // Ensure the User navigation property is included
+                .Include(v => v.User)
                 .Select(visit => new VisitIndexViewModel
                 {
                     VisitId = visit.VisitId,
                     VisitDate = visit.VisitDate,
                     ReasonForVisit = visit.ReasonForVisit,
-                    UserId = visit.UserId // Ensure User.Name or equivalent property exists
+                    UserId = visit.UserId
                 })
                 .ToListAsync();
         }
 
-
-        public async Task<VisitDetailViewModel> GetVisitByIdAsync(string visitId)
+        public async Task<VisitDetailViewModel> GetVisitByIdAsync(int visitId)
         {
             var entity = await _context.Visits
                 .Include(v => v.User)
-                .FirstOrDefaultAsync(v => v.VisitId = visitId);
+                .FirstOrDefaultAsync(v => v.VisitId == visitId);
 
             if (entity == null) return null;
 
@@ -62,7 +60,6 @@ namespace PhiloWellnessMVC.Services
                 UserId = entity.UserId,
             };
         }
-
 
         public async Task<bool> UpdateVisitAsync(VisitEditViewModel model)
         {
@@ -76,7 +73,6 @@ namespace PhiloWellnessMVC.Services
             return await _context.SaveChangesAsync() == 1;
         }
 
-
         public async Task<bool> DeleteVisitAsync(int visitId)
         {
             var entity = await _context.Visits.FindAsync(visitId);
@@ -85,11 +81,6 @@ namespace PhiloWellnessMVC.Services
 
             _context.Visits.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
-        }
-
-        public Task<VisitDetailViewModel> GetVisitByIdAsync(int visitId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

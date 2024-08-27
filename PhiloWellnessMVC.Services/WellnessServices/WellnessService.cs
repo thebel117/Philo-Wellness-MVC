@@ -25,31 +25,32 @@ namespace PhiloWellnessMVC.Services
                 {
                     WellnessId = record.WellnessId,
                     UserName = record.StudentProfile.Name, // Ensure this property exists
-                    SelfRating = record.SelfRatedWellness, // Change to correct properties if needed
-                    FacultyRating = record.FacultyPerceivedWellness,
+                    SelfRating = record.SelfRating, // Change to correct properties if needed
+                    FacultyRating = record.FacultyRating,
                     Date = record.DateRecorded
                 })
                 .ToListAsync();
         }
 
 
-        public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(int wellnessId)
-        {
-            var entity = await _context.WellnessRatings
-                .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
-                .FirstOrDefaultAsync(w => w.WellnessId == wellnessId);
+public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(string wellnessId)
+{
+    var entity = await _context.WellnessRatings
+        .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
+        .FirstOrDefaultAsync(w => w.WellnessId = wellnessId); // Use '==' for comparison
 
-            if (entity == null) return null;
+    if (entity == null) return null;
 
-            return new WellnessDetailViewModel
-            {
-                WellnessId = entity.WellnessId,
-                UserId = entity.StudentProfile.StudentProfileId, // Ensure this property exists
-                SelfRating = entity.SelfRatedWellness, // Adjust as per model changes
-                FacultyRating = entity.FacultyPerceivedWellness,
-                Date = entity.DateRecorded
-            };
-        }
+    return new WellnessDetailViewModel
+    {
+        WellnessId = entity.WellnessId,
+        UserId = entity.StudentProfile.StudentProfileId, // Ensure this property exists
+        SelfRating = entity.SelfRatedWellness, // Adjust as per model changes
+        FacultyRating = entity.FacultyPerceivedWellness,
+        Date = entity.DateRecorded
+    };
+}
+
 
         public async Task<bool> CreateWellnessAsync(WellnessCreateViewModel model)
         {
@@ -72,8 +73,8 @@ namespace PhiloWellnessMVC.Services
             if (entity == null) return false;
 
             entity.DateRecorded = model.Date;
-            entity.SelfRatedWellness = model.SelfRating; // Adjust as per your needs
-            entity.FacultyPerceivedWellness = model.FacultyRating;
+            entity.SelfRating = model.SelfRating; // Adjust as per your needs
+            entity.FacultyRating = model.FacultyRating;
 
             return await _context.SaveChangesAsync() == 1;
         }
@@ -86,6 +87,11 @@ namespace PhiloWellnessMVC.Services
 
             _context.WellnessRatings.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
+        }
+
+        public Task<WellnessDetailViewModel> GetWellnessByIdAsync(int wellnessId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

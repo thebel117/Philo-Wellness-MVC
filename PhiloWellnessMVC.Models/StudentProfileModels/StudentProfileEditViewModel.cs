@@ -5,7 +5,7 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
     public class StudentProfileEditViewModel
     {
         [Required]
-        public int StudentProfileId { get; set; }
+        public string StudentProfileId { get; set; }
         [Required]
         [MaxLength(100)]
         public string? FirstName { get; set; }

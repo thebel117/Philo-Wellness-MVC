@@ -5,7 +5,7 @@ namespace PhiloWellnessMVC.Models.StudentProfileModels
 {
     public class StudentProfileDetailViewModel
     {
-        public int StudentProfileId { get; set; }
+        public string StudentProfileId { get; set; }
         public int UserId { get; set; }
         required public string Name { get; set; }
         public int Grade { get; set; }

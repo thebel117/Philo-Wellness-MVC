@@ -7,7 +7,7 @@ namespace PhiloWellnessMVC.Data.Entities
     public class StudentProfileEntity
     {
         [Key]
-        public int StudentProfileId { get; set; }
+        public string StudentProfileId { get; set; }
 
         [Required]
         [MaxLength(100)]
