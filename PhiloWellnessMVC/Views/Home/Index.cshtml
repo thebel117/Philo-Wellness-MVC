@@ -3,6 +3,17 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Philo Wellness!</h1>
+    <p>Use the options below to navigate through the application:</p>
+
+    <div>
+        <ul class="list-unstyled">
+            <li><a href="@Url.Action("Index", "StudentProfile")">Student Profiles</a></li>
+            <li><a href="@Url.Action("Index", "Visit")">Visits</a></li>
+            <li><a href="@Url.Action("Index", "Wellness")">Wellness Ratings</a></li>
+            <li><a href="@Url.Action("Create", "StudentProfile")">Create a New Student Profile</a></li>
+            <li><a href="@Url.Action("Create", "Visit")">Record a New Visit</a></li>
+            <li><a href="@Url.Action("Create", "Wellness")">Add a New Wellness Rating</a></li>
+        </ul>
+    </div>
 </div>
