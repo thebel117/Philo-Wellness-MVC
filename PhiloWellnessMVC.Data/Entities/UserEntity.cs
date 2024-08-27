@@ -8,7 +8,7 @@ namespace PhiloWellnessMVC.Data.Entities
     public class UserEntity
     {
         [Key]
-        public int UserId { get; set; }
+        required public string UserId { get; set; }
 
         [Required,MaxLength(100)]
         public string? FirstName { get; set; }

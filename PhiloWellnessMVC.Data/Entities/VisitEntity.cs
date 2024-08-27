@@ -20,11 +20,11 @@ namespace PhiloWellnessMVC.Data.Entities
 
         // Foreign key for StudentProfile
         [ForeignKey("StudentProfileEntity")]
-        public int StudentProfileId { get; set; }
+        public string? StudentProfileId { get; set; }
         public StudentProfileEntity? StudentProfile { get; set; }
 
         [ForeignKey("UserEntity")]
-        public int UserId { get; set; }
+        required public string UserId { get; set; }
         public UserEntity? User { get; set; }
     }
 }

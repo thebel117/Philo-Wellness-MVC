@@ -46,11 +46,11 @@ namespace PhiloWellnessMVC.Services
         }
 
 
-        public async Task<VisitDetailViewModel> GetVisitByIdAsync(int visitId)
+        public async Task<VisitDetailViewModel> GetVisitByIdAsync(string visitId)
         {
             var entity = await _context.Visits
                 .Include(v => v.User)
-                .FirstOrDefaultAsync(v => v.VisitId == visitId);
+                .FirstOrDefaultAsync(v => v.VisitId = visitId);
 
             if (entity == null) return null;
 
@@ -85,6 +85,11 @@ namespace PhiloWellnessMVC.Services
 
             _context.Visits.Remove(entity);
             return await _context.SaveChangesAsync() == 1;
+        }
+
+        public Task<VisitDetailViewModel> GetVisitByIdAsync(int visitId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

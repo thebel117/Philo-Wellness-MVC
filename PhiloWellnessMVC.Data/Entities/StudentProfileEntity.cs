@@ -17,14 +17,22 @@ namespace PhiloWellnessMVC.Data.Entities
         [MaxLength(100)]
         public string? LastName { get; set; }
 
+        public string Name
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
         [Required]
         public int Grade { get; set; }
 
         [Required]
         public string? StudentIdNumber { get; set; }
-            
+
         [ForeignKey("UserEntity")]
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
         public UserEntity? User { get; set; }
 
         // Navigation properties
