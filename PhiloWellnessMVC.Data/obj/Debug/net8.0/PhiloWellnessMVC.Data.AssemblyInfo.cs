@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhiloWellnessMVC.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e894592fa28ca8c937140927858dc8d7bed80d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9f4315092da93742ef0583a4967ced410cc0a67")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhiloWellnessMVC.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhiloWellnessMVC.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

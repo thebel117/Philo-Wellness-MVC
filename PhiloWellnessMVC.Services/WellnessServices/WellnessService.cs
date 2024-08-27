@@ -33,23 +33,28 @@ namespace PhiloWellnessMVC.Services
         }
 
 
-public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(string wellnessId)
-{
-    var entity = await _context.WellnessRatings
-        .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
-        .FirstOrDefaultAsync(w => w.WellnessId = wellnessId); // Use '==' for comparison
+        public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(string wellnessId)
+        {
+            // Attempt to find the entity by comparing the string ID directly
+            var entity = await _context.WellnessRatings
+                .Include(w => w.StudentProfile) // Ensure StudentProfile navigation property is included
+                .FirstOrDefaultAsync(w => w.WellnessId == wellnessId); // Compare as strings
 
-    if (entity == null) return null;
+            if (entity == null) return null;
 
-    return new WellnessDetailViewModel
-    {
-        WellnessId = entity.WellnessId,
-        UserId = entity.StudentProfile.StudentProfileId, // Ensure this property exists
-        SelfRating = entity.SelfRatedWellness, // Adjust as per model changes
-        FacultyRating = entity.FacultyPerceivedWellness,
-        Date = entity.DateRecorded
-    };
-}
+            // Return the details as a view model
+            return new WellnessDetailViewModel
+            {
+                WellnessId = entity.WellnessId, // No conversion needed as it's already a string
+                UserId = entity.StudentProfileId, // Ensure this property exists
+                SelfRating = entity.SelfRating, // Adjust as per model changes
+                FacultyRating = entity.FacultyRating,
+                Date = entity.DateRecorded
+            };
+        }
+
+
+
 
 
         public async Task<bool> CreateWellnessAsync(WellnessCreateViewModel model)
@@ -57,8 +62,8 @@ public async Task<WellnessDetailViewModel> GetWellnessByIdAsync(string wellnessI
             var entity = new WellnessEntity
             {
                 DateRecorded = model.Date,
-                SelfRatedWellness = model.SelfRating, // Ensure correct property is used
-                FacultyPerceivedWellness = model.FacultyRating,
+                SelfRating = model.SelfRating, // Ensure correct property is used
+                FacultyRating = model.FacultyRating,
                 StudentProfileId = model.UserId // Ensure this is correctly referenced
             };
 

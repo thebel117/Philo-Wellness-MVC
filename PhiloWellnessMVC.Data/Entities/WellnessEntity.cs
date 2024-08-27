@@ -7,7 +7,7 @@ namespace PhiloWellnessMVC.Data.Entities
     public class WellnessEntity
     {
         [Key]
-        public int WellnessId { get; set; }
+        public string? WellnessId { get; set; }
 
         [Required]
         public DateTime DateRecorded { get; set; }

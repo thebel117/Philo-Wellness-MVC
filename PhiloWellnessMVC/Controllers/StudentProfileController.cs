@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PhiloWellnessMVC.Services.StudentProfile;
+using PhiloWellnessMVC.Services.StudentProfileServices;
 using PhiloWellnessMVC.Models.StudentProfileModels;
+using PhiloWellnessMVC.Services;
 
 namespace PhiloWellnessMVC.Controllers
 {
@@ -58,7 +59,7 @@ namespace PhiloWellnessMVC.Controllers
         // GET: StudentProfile/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var studentProfile = await _studentProfileService.GetStudentProfileByIdForEditAsync(id);
+            var studentProfile = await _studentProfileService.GetStudentProfileByIdAsync(id);
             if (studentProfile == null)
             {
                 return NotFound();
@@ -73,7 +74,7 @@ namespace PhiloWellnessMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var success = await _studentProfileService.EditStudentProfileAsync(model);
+                var success = await _studentProfileService.UpdateStudentProfileAsync(model);
                 if (success)
                 {
                     return RedirectToAction(nameof(Index));

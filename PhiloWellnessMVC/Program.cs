@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PhiloWellnessMVC.Data;
 using PhiloWellnessMVC.Models.AutoMap;
 using PhiloWellnessMVC.Services;
+using PhiloWellnessMVC.Services.StudentProfileServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

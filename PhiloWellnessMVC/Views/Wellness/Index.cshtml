@@ -12,7 +12,7 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DateRecorded)
+                    @Html.DisplayNameFor(model => model.Date)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.SelfRating)
@@ -21,7 +21,7 @@
                     @Html.DisplayNameFor(model => model.FacultyRating)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Notes)
+                    @Html.DisplayNameFor(model => model.IncidentNotes)
                 </th>
                 <th>
                     &nbsp;
@@ -33,7 +33,7 @@
             {
                 <tr>
                     <td>
-                        @wellness.DateRecorded.ToShortDateString()
+                        @wellness.Date.ToShortDateString()
                     </td>
                     <td>
                         @wellness.SelfRating
@@ -42,7 +42,7 @@
                         @wellness.FacultyRating
                     </td>
                     <td>
-                        @wellness.Notes
+                        @wellness.IncidentNotes
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = wellness.WellnessId }) |
