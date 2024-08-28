@@ -6,4 +6,7 @@ after updating your DbContext, run 'dotnet ef migrations add UpdateDbContext' an
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1- Clean up database, and get rid of extra tables from pre-migrations.
-2- 
+2- CreateWellnessRecord --> An unhandled exception occurred while processing the request.
+InvalidOperationException: Unable to track an entity of type 'WellnessEntity' because its primary key property 'WellnessId' is null.
+
+3- No users are being stored from the creates 
