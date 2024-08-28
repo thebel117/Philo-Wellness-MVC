@@ -1,6 +1,6 @@
 Philo Wellness
 
-Philo Wellness (named for Saint Philomena) is a web application designed to manage and track student wellness data for school nurses' offices. The application allows users to record and review wellness ratings, manage student profiles, and track visit records.
+Philo Wellness (named for Saint Philomena) is a web application designed to manage and track student wellness data for school nurses' offices, faculty, and guidance counselors. The application allows users to record and review wellness ratings, manage student profiles, and track visit records.
 
 Features
 
@@ -39,9 +39,7 @@ Steps
 5.  Run the application :
    dotnet run
 
-   or for automatic reload on changes:
-
-   dotnet watch run
+or for automatic reload on changes: dotnet watch run
 ----------------------------------------------------------------------------------------------------
 Usage
 
@@ -57,16 +55,24 @@ Use the links on the home page to access the different views and functions of th
   Project Structure
 
 PhiloWellness/
+
 ├── Controllers/           Handles HTTP requests and responses
+
 ├── Data/                  Database context and entity configurations
+
 ├── Models/                View models and entity models
+
 ├── Services/              Business logic and data manipulation
+
 ├── Views/                 Razor views for the UI
+
 ├── wwwroot/               Static files like CSS, JS, and images
+
 ├── Program.cs             Application entry point
+
 └── Startup.cs             Configuration and service registration
 
 
   Contributing
 
-Contributions are welcome-- While Philo is still very young and needing a lot of work, but with enough hopefully she will be something useful for people who need her. :)
+Contributions are welcome-- While Philo is still very young and needing a lot of work, with enough effort hopefully she will be something useful for people who need her. :)

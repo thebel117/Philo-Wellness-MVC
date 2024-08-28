@@ -5,10 +5,5 @@ apply them with 'dotnet ef database update'
 after updating your DbContext, run 'dotnet ef migrations add UpdateDbContext' and 'dotnet ef database update' to apply the changes
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TO DO:
-
-Rebuild database:
-    Cannot update the db through terminal due to unknown errors; retry making it prior to final push
-
-Fix types:
-    StudentProfileId is going to become just a string due to complications with services; need this done to redo DB and to start testing functionality.
+1- Clean up database, and get rid of extra tables from pre-migrations.
+2- 

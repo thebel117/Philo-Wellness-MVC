@@ -6,7 +6,7 @@ namespace PhiloWellnessMVC.Models.WellnessModels
     public class WellnessEditViewModel
     {
         [Required]
-        public string? WellnessId { get; set; }
+        public string WellnessId { get; set; }
 
         [Required]
         public string UserId { get; set; }

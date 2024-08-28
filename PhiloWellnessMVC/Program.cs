@@ -21,6 +21,7 @@ builder.Services.AddScoped<IVisitService, VisitService>();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 builder.Services.AddScoped<IWellnessService, WellnessService>();
 builder.Services.AddAutoMapper(typeof(StudentProfileMapProfile), typeof(VisitMapProfile), typeof(WellnessMapProfile));
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

@@ -11,11 +11,11 @@ namespace PhiloWellnessMVC.Data.Entities
 
         [Required]
         [MaxLength(100)]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string? LastName { get; set; }
+        public string LastName { get; set; }
 
         public string Name
         {
@@ -29,14 +29,14 @@ namespace PhiloWellnessMVC.Data.Entities
         public int Grade { get; set; }
 
         [Required]
-        public string? StudentIdNumber { get; set; }
+        public string StudentIdNumber { get; set; }
 
         [ForeignKey("UserEntity")]
-        public string? UserId { get; set; }
-        public UserEntity? User { get; set; }
+        public string UserId { get; set; }
+        public UserEntity User { get; set; }
 
         // Navigation properties
-        public ICollection<VisitEntity>? Visits { get; set; }
-        public ICollection<WellnessEntity>? WellnessRatings { get; set; }
+        public ICollection<VisitEntity> Visits { get; set; }
+        public ICollection<WellnessEntity> WellnessRatings { get; set; }
     }
 }

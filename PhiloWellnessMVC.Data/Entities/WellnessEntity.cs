@@ -7,7 +7,7 @@ namespace PhiloWellnessMVC.Data.Entities
     public class WellnessEntity
     {
         [Key]
-        public string? WellnessId { get; set; }
+        public string WellnessId { get; set; }
 
         [Required]
         public DateTime DateRecorded { get; set; }
@@ -26,7 +26,7 @@ namespace PhiloWellnessMVC.Data.Entities
         public StudentProfileEntity? StudentProfile { get; set; }
             
         [ForeignKey("UserEntity")]
-        public string? UserId { get; set; }
-        public UserEntity? User { get; set; }
+        public string UserId { get; set; }
+        public UserEntity User { get; set; }
     }
 }
