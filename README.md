@@ -28,7 +28,7 @@ Steps
 1.  Clone the repository :
 
 2.  Navigate to the project directory :
-   cd PhiloWellness
+   cd PhiloWellnessMVC
 
 3.  Restore dependencies :
    dotnet restore
