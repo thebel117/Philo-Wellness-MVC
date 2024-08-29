@@ -1,3 +1,9 @@
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.csproj.AssemblyReference.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.AssemblyInfoInputs.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.AssemblyInfo.cs
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.csproj.CoreCompileInputs.cache
+C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.sourcelink.json
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Services.deps.json
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Services.runtimeconfig.json
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Services.dll
@@ -6,12 +12,6 @@ C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\Phil
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Models.dll
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Data.pdb
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\bin\Debug\net8.0\PhiloWellnessMVC.Models.pdb
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.csproj.AssemblyReference.cache
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.AssemblyInfoInputs.cache
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.AssemblyInfo.cs
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.csproj.CoreCompileInputs.cache
-C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.sourcelink.json
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWel.16ECB305.Up2Date
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\PhiloWellnessMVC.Services.dll
 C:\Users\feelf\Desktop\ElevenFiftyProjects\PhiloWellness\Philo-Wellness-MVC\PhiloWellnessMVC.Services\obj\Debug\net8.0\refint\PhiloWellnessMVC.Services.dll

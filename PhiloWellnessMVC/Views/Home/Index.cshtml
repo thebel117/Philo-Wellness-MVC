@@ -3,18 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Philo Wellness!</h1>
-    <p>Use the options below to navigate through the application:</p>
+    <h1 class="display-4">Welcome to Philo</h1>
+    <p>Choose your task from the options below</p>
 
-    <div>
-        <ul class="list-unstyled">
-            <li><a href="@Url.Action("Index", "StudentProfile")">Student Profiles</a></li>
-            <li><a href="@Url.Action("Index", "Visit")">Visits</a></li>
-            <li><a href="@Url.Action("Index", "Wellness")">Wellness Ratings</a></li>
-            <li><a href="@Url.Action("Create", "StudentProfile")">Create a New Student Profile</a></li>
-            <li><a href="@Url.Action("Create", "Visit")">Record a New Visit</a></li>
-            <li><a href="@Url.Action("Create", "Wellness")">Add a New Wellness Rating</a></li>
-            <li><a href="@Url.Action("Create", "User")">Create a New User</a></li>
-        </ul>
+    <div class="links-container">
+        <a class="link-box" href="@Url.Action("Index", "StudentProfile")">Student Profiles</a>
+        <a class="link-box" href="@Url.Action("Index", "Visit")">Visits</a>
+        <a class="link-box" href="@Url.Action("Index", "Wellness")">Wellness Ratings</a>
+        <a class="link-box" href="@Url.Action("Create", "StudentProfile")">Create a New Student Profile</a>
+        <a class="link-box" href="@Url.Action("Create", "Visit")">Record a New Visit</a>
+        <a class="link-box" href="@Url.Action("Create", "Wellness")">Add a New Wellness Rating</a>
+        <a class="link-box" href="@Url.Action("Create", "User")">Create a New User</a>
     </div>
 </div>

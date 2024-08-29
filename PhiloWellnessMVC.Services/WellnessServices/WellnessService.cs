@@ -24,7 +24,7 @@ namespace PhiloWellnessMVC.Services
                 .Select(record => new WellnessIndexViewModel
                 {
                     WellnessId = record.WellnessId,
-                    UserName = record.StudentProfile.Name, // Ensure this property exists
+                    UserName = record.UserId, // Ensure this property exists
                     SelfRating = record.SelfRating, // Change to correct properties if needed
                     FacultyRating = record.FacultyRating,
                     Date = record.DateRecorded

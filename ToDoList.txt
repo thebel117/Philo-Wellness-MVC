@@ -5,11 +5,25 @@ apply them with 'dotnet ef database update'
 after updating your DbContext, run 'dotnet ef migrations add UpdateDbContext' and 'dotnet ef database update' to apply the changes
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2- CreateWellnessRecord --> An unhandled exception occurred while processing the request.
+
+CURRENT ERRORS LOG:
+
+***AS OF LAST UPDATE, ONLY USER/CREATE IS OPERATING NORMALLY. NEED TO REASSESS ALL NOMENCLATURE!***
+
+StudentProfile/Create
+An unhandled exception occurred while processing the request.
+ArgumentNullException: Value cannot be null. (Parameter 'items')
+
+System.ArgumentNullException.Throw(string paramName)
+
+Visit/Create
+An unhandled exception occurred while processing the request.
+NullReferenceException: Object reference not set to an instance of an object.
+
+Microsoft.AspNetCore.Mvc.Rendering.MultiSelectList.GetListItemsWithValueField()
+
+Wellness/Create
 InvalidOperationException: Unable to track an entity of type 'WellnessEntity' because its primary key property 'WellnessId' is null.
 
-3- No users are being stored from the creates 
+Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NullableKeyIdentityMap<TKey>.Add(InternalEntityEntry entry)
 
-4- Need name fields for CreateStudentPro --> need all req'd properties on every create page, double check them!
-
-5- Nix the Full Name idea-- just do First and Last for prompts

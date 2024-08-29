@@ -1,6 +1,6 @@
 /* Base Font Size */
 html {
-  font-size: 14px;
+  font-size: 17px;
 }
 
 @media (min-width: 768px) {
@@ -60,3 +60,31 @@ body {
   border-radius: 8px; /* Soft rounded corners */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+.links-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center align items horizontally */
+  gap: 30px; /* Increase space between the boxes */
+  margin-top: 30px; /* Space above the link boxes */
+}
+
+.link-box {
+  display: block;
+  padding: 20px 35px; /* Increase padding inside the boxes */
+  border-radius: 15px; /* Slightly larger rounded corners */
+  background-color: #f8f9fa; /* Light background color for boxes */
+  color: #007bff; /* Text color */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 18px; /* Larger font size */
+  font-weight: 600; /* Slightly bolder font weight */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly more pronounced shadow */
+  transition: background-color 0.3s, color 0.3s; /* Smooth color transitions */
+}
+
+.link-box:hover {
+  background-color: #007bff; /* Background color on hover */
+  color: #ffffff; /* Text color on hover */
+  text-decoration: none; /* Ensure text decoration is not overridden */
+}
+

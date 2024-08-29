@@ -79,4 +79,3 @@ Philo-Wellness-MVC/
 ├── appsettings.json
 ├── Philo.csproj
 ├── Program.cs
-└── Startup.cs

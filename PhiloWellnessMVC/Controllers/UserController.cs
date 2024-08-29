@@ -32,11 +32,20 @@ namespace PhiloWellnessMVC.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-
                 ModelState.AddModelError("", "Unable to create user.");
+            }
+            else
+            {
+                // Log the validation errors
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error.ErrorMessage); // Or use a logger
+                }
             }
 
             return View(model);
         }
+
     }
 }
