@@ -32,47 +32,59 @@ namespace PhiloWellnessMVC.Services.StudentProfileServices
                 .ToListAsync();
         }
 
-public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(string studentProfileId)
-{
-    var entity = await _context.StudentProfiles
-        .Include(sp => sp.WellnessRatings)
-        .FirstOrDefaultAsync(sp => sp.StudentProfileId == studentProfileId); // Use '==' for comparison
+        public async Task<StudentProfileDetailViewModel> GetStudentProfileByIdAsync(string studentProfileId)
+        {
+            var entity = await _context.StudentProfiles
+                .Include(sp => sp.WellnessRatings)
+                .FirstOrDefaultAsync(sp => sp.StudentProfileId == studentProfileId); // Use '==' for comparison
 
-    if (entity == null) return null;
+            if (entity == null) return null;
 
-    return new StudentProfileDetailViewModel
-    {
-        StudentProfileId = entity.StudentProfileId,
-        Name = entity.FirstName + " " + entity.LastName,
-        Grade = entity.Grade,
-        StudentIdNumber = entity.StudentIdNumber, // treat it as a string instead
-        WellnessRecords = entity.WellnessRatings
-            .Select(r => new WellnessIndexViewModel
+            return new StudentProfileDetailViewModel
             {
-                WellnessId = r.WellnessId,
-                SelfRating = r.SelfRating,
-                FacultyRating = r.FacultyRating,
-                Date = r.DateRecorded
-            }).ToList()
+                StudentProfileId = entity.StudentProfileId,
+                Name = entity.FirstName + " " + entity.LastName,
+                Grade = entity.Grade,
+                StudentIdNumber = entity.StudentIdNumber, // treat it as a string instead
+                WellnessRecords = entity.WellnessRatings
+                    .Select(r => new WellnessIndexViewModel
+                    {
+                        WellnessId = r.WellnessId,
+                        SelfRating = r.SelfRating,
+                        FacultyRating = r.FacultyRating,
+                        Date = r.DateRecorded
+                    }).ToList()
+            };
+        }
+
+
+public async Task<bool> CreateStudentProfileAsync(StudentProfileCreateViewModel model)
+{
+    // Check if the UserId exists in the Users table
+    var userExists = await _context.Users.AnyAsync(u => u.UserId == model.UserId.ToString());
+    if (!userExists)
+    {
+        throw new InvalidOperationException("The provided UserId does not exist in the Users table.");
+    }
+
+    // Create the StudentProfileEntity object with the necessary properties
+    var entity = new StudentProfileEntity
+    {
+        UserId = model.UserId.ToString(),  // Assuming UserId needs to be converted to string
+        FirstName = model.FirstName,       // Directly use FirstName from the model
+        LastName = model.LastName,         // Directly use LastName from the model
+        Grade = model.Grade,
+        StudentIdNumber = model.StudentIdNumber,
+        // Add any additional properties if necessary
     };
+
+    // Add the entity to the context and save changes
+    _context.StudentProfiles.Add(entity);
+    return await _context.SaveChangesAsync() == 1;  // Return true if exactly one record is affected
 }
 
 
-        public async Task<bool> CreateStudentProfileAsync(StudentProfileCreateViewModel model)
-        {
-            var nameParts = model.Name.Split(' ');
-            var entity = new StudentProfileEntity
-            {
-                FirstName = nameParts[0],
-                LastName = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty,
-                Grade = model.Grade,
-                StudentIdNumber = model.StudentIdNumber, // Treated as a string
-                // Map additional properties if necessary
-            };
 
-            _context.StudentProfiles.Add(entity);
-            return await _context.SaveChangesAsync() == 1;
-        }
 
         public async Task<bool> UpdateStudentProfileAsync(StudentProfileEditViewModel model)
         {

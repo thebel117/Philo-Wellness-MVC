@@ -47,7 +47,7 @@ namespace PhiloWellnessMVC.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _studentProfileService.CreateStudentProfileAsync(model);
-                if (result != null)
+                if (result)
                 {
                     return RedirectToAction(nameof(Index));
                 }

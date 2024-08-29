@@ -7,7 +7,7 @@ namespace PhiloWellnessMVC.Data.Entities
     public class StudentProfileEntity
     {
         [Key]
-        public string StudentProfileId { get; set; }
+        public string StudentProfileId { get; set; } = Guid.NewGuid().ToString();  // Auto-generates GUID, gets rid of the annoying null error I keep getting and saves adding a new field on Create.cshtml.
 
         [Required]
         [MaxLength(100)]
@@ -16,14 +16,6 @@ namespace PhiloWellnessMVC.Data.Entities
         [Required]
         [MaxLength(100)]
         public string LastName { get; set; }
-
-        public string Name
-        {
-            get
-            {
-                return $"{FirstName} {LastName}";
-            }
-        }
 
         [Required]
         public int Grade { get; set; }
